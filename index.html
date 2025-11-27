@@ -338,25 +338,31 @@
         }
 
         // --- UPDATED LIBRARY ---
-        // Added "Midnight Jazz" back to the top for the banner to work.
-        // Followed by your 7 safe lyrical tracks.
+        // Includes user-provided links for Jo Tum Mere Ho, Tere Bina, Ishq, and Tum Hi Ho.
         const library = [
-            // 0. The Banner Track (Midnight Jazz Visuals)
-            { id: 'kgx4WGK0oNU', title: "Midnight Jazz", artist: "Velora Mix", img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=800" },
-            // 1. Saiyaara (Lyrical)
-            { id: 'HQp0DwtTP18', title: "Saiyaara", artist: "Faheem Abdullah", img: "https://i.ytimg.com/vi/HQp0DwtTP18/hqdefault.jpg" },
-            // 2. Barbaad (Lyrical)
-            { id: '8WOhUueYAZs', title: "Barbaad", artist: "Jubin Nautiyal", img: "https://i.ytimg.com/vi/8WOhUueYAZs/hqdefault.jpg" },
-            // 3. Dhun (Lyrical)
-            { id: 'COuGgctJ91A', title: "Dhun", artist: "Arijit Singh", img: "https://i.ytimg.com/vi/COuGgctJ91A/hqdefault.jpg" },
-            // 4. Jo Tum Mere Ho (Lyrical)
-            { id: 'wtPcVgiZ2nE', title: "Jo Tum Mere Ho", artist: "Anuv Jain", img: "https://i.ytimg.com/vi/wtPcVgiZ2nE/hqdefault.jpg" },
-            // 5. Tere Bina (Lyrical)
-            { id: 'Vq8lrcAyI3k', title: "Tere Bina", artist: "A.R. Rahman", img: "https://i.ytimg.com/vi/Vq8lrcAyI3k/hqdefault.jpg" },
-            // 6. Ishq (Lyrical)
-            { id: 'M3KqF_yX_7c', title: "Ishq", artist: "Faheem Abdullah", img: "https://i.ytimg.com/vi/M3KqF_yX_7c/hqdefault.jpg" },
-            // 7. Tum Hi Ho (Lyrical)
-            { id: 'T3E9Wjbq44E', title: "Tum Hi Ho", artist: "Arijit Singh", img: "https://i.ytimg.com/vi/T3E9Wjbq44E/hqdefault.jpg" }
+            // 0. Banner Track (Hidden from trending list)
+            { id: 'kgx4WGK0oNU', title: "Midnight Jazz", artist: "Velora Mix", img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=800", isTrending: false },
+            
+            // 1. Saiyaara (Safe Version)
+            { id: '1wRbK2j9wjo', title: "Saiyaara", artist: "Faheem Abdullah", img: "https://i.ytimg.com/vi/1wRbK2j9wjo/hqdefault.jpg", isTrending: true },
+            
+            // 2. Barbaad (Safe Version)
+            { id: '5Eqb_-j3FDA', title: "Barbaad", artist: "Jubin Nautiyal", img: "https://i.ytimg.com/vi/5Eqb_-j3FDA/hqdefault.jpg", isTrending: true },
+            
+            // 3. Dhun (Safe Version)
+            { id: '_X7V6V2zO1g', title: "Dhun", artist: "Arijit Singh", img: "https://i.ytimg.com/vi/_X7V6V2zO1g/hqdefault.jpg", isTrending: true },
+            
+            // 4. Jo Tum Mere Ho (Updated with User Link)
+            { id: 'wmUJwQNGK3k', title: "Jo Tum Mere Ho", artist: "Anuv Jain", img: "https://i.ytimg.com/vi/wmUJwQNGK3k/hqdefault.jpg", isTrending: true },
+            
+            // 5. Tere Bina (Updated with User Link)
+            { id: 'rm5-KhqwqeQ', title: "Tere Bina", artist: "A.R. Rahman", img: "https://i.ytimg.com/vi/rm5-KhqwqeQ/hqdefault.jpg", isTrending: true },
+            
+            // 6. Ishq (Updated with User Link)
+            { id: 'yVhhoyfLDfA', title: "Ishq", artist: "Faheem Abdullah", img: "https://i.ytimg.com/vi/yVhhoyfLDfA/hqdefault.jpg", isTrending: true },
+            
+            // 7. Tum Hi Ho (Updated with User Link)
+            { id: 'asxmdFaIock', title: "Tum Hi Ho", artist: "Arijit Singh", img: "https://i.ytimg.com/vi/asxmdFaIock/hqdefault.jpg", isTrending: true }
         ];
 
         let isPlaying = false;
@@ -426,9 +432,16 @@
 
         function renderTrendingRow() {
             const container = document.getElementById('trending-container');
-            // Don't show the banner track in the trending list, start from index 1
-            const trendingLibrary = library.slice(1);
-            container.innerHTML = trendingLibrary.map((song, idx) => `
+            
+            // --- UPDATED LOGIC: Filter by flag instead of index slice ---
+            const trendingSongs = library.filter(s => s.isTrending);
+
+            if(trendingSongs.length === 0) {
+                container.innerHTML = `<p class="text-gray-500 pl-2">No trending songs.</p>`;
+                return;
+            }
+
+            container.innerHTML = trendingSongs.map((song, idx) => `
             <div onclick="playTrack('${song.id}')" class="min-w-[140px] w-[140px] bg-white/5 p-3 rounded-xl border border-white/5 active:bg-white/10 cursor-pointer group transition snap-start">
                 <div class="relative mb-2">
                     <img src="${song.img}" class="w-full aspect-square object-cover rounded-lg shadow-lg">
@@ -523,7 +536,7 @@
         const searchInput = document.getElementById('search-input');
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
-            // Filter starting from index 1 to skip the banner track in search
+            // Filter starting from index 1 to skip the banner track in search results
             const results = library.slice(1).filter(s => s.title.toLowerCase().includes(query) || s.artist.toLowerCase().includes(query));
             const resultsGrid = document.getElementById('search-results-grid');
             if (results.length > 0) {

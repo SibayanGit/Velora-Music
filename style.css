@@ -1,14 +1,14 @@
-/* ------------------------------------------------------
+/* -----------------------------
    GLOBAL STYLES
-------------------------------------------------------- */
+------------------------------ */
 
 body {
     font-family: 'Outfit', sans-serif;
     background-color: #050505;
     background-image:
-        radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
-        radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
-        radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+        radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%),
+        radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
     color: #fff;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
@@ -16,49 +16,41 @@ body {
 }
 
 /* Hide scrollbars */
-.hide-scroll::-webkit-scrollbar {
-    display: none;
-}
+.hide-scroll::-webkit-scrollbar { display: none; }
+.hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-.hide-scroll {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* ------------------------------------------------------
-   GLASS EFFECTS
-------------------------------------------------------- */
+/* -----------------------------
+   GLASS EFFECT PANELS
+------------------------------ */
 
 .glass-panel {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255,255,255,0.03);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transform: translateZ(0);
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 .glass-nav {
-    background: rgba(5, 5, 5, 0.95);
+    background: rgba(5,5,5,0.95);
     backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .glass-capsule {
-    background: rgba(10, 10, 10, 0.9);
+    background: rgba(10,10,10,0.9);
     backdrop-filter: blur(30px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    transform: translateZ(0);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
-/* ------------------------------------------------------
-   NAVIGATION
-------------------------------------------------------- */
+/* -----------------------------
+   NAVIGATION ITEMS
+------------------------------ */
 
 .nav-item.active {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255,255,255,0.1);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .nav-item.inactive {
@@ -68,27 +60,19 @@ body {
 
 .nav-item.inactive:hover {
     color: white;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255,255,255,0.05);
 }
 
 .mobile-nav-item.active {
     color: #c084fc;
 }
-
 .mobile-nav-item.inactive {
     color: #6b7280;
 }
 
-/* Sidebar smooth transition */
-.sidebar-transition {
-    transition: width 0.4s cubic-bezier(.4, 0, .2, 1),
-                opacity 0.3s ease,
-                padding 0.3s ease;
-}
-
-/* ------------------------------------------------------
-   SEARCH BAR, INPUTS
-------------------------------------------------------- */
+/* -----------------------------
+   RANGE SLIDERS
+------------------------------ */
 
 input[type=range] {
     -webkit-appearance: none;
@@ -99,89 +83,63 @@ input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 12px;
     width: 12px;
-    border-radius: 50%;
     background: #fff;
+    border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
     margin-top: -4px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
     height: 4px;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255,255,255,0.2);
     border-radius: 2px;
+    cursor: pointer;
 }
 
-/* ------------------------------------------------------
-   PLAYER
-------------------------------------------------------- */
+/* -----------------------------
+   SIDEBAR TRANSITION
+------------------------------ */
 
-#music-player {
-    transition: transform 0.5s ease;
+.sidebar-transition {
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                padding 0.3s ease;
 }
 
-/* Player vinyl spin */
+/* -----------------------------
+   PLAYER SPIN ANIMATION
+------------------------------ */
+
 @keyframes spin-slow {
     from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.spin {
-    animation: spin-slow 8s linear infinite;
+    to   { transform: rotate(360deg); }
 }
 
 .paused-spin {
     animation-play-state: paused !important;
 }
 
-/* ------------------------------------------------------
-   VIDEO PiP OVERLAY
-------------------------------------------------------- */
+/* -----------------------------
+   NOW PLAYING SECTION (CLEAN)
+------------------------------ */
 
-#video-overlay {
-    position: fixed;
-    z-index: 50;
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-    opacity: 0;
-
-    transition: opacity 0.3s ease,
-                width 0.3s ease,
-                height 0.3s ease,
-                top 0.3s ease,
-                left 0.3s ease,
-                bottom 0.3s ease,
-                right 0.3s ease,
-                border-radius 0.3s ease;
-
-    top: -1000px;
-    left: -1000px;
-    width: 1px;
-    height: 1px;
+#now-playing-section {
+    /* clean spacing without box */
 }
 
-#video-overlay.visible {
-    opacity: 1;
-    pointer-events: auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+#now-title, #now-artist {
+    transition: color 0.2s ease;
 }
 
-/* ------------------------------------------------------
-   RESPONSIVE FIXES
-------------------------------------------------------- */
+#now-playing-section:hover #now-title {
+    color: #ffffff;
+}
 
-@media (max-width: 768px) {
-    #youtube-player {
-        height: 160px !important;
-    }
+/* -----------------------------
+   UTILITY
+------------------------------ */
 
-    #player-art {
-        width: 60px;
-        height: 60px;
-    }
+.text-shadow {
+    text-shadow: 0px 2px 8px rgba(0,0,0,0.6);
 }

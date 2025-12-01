@@ -1,0 +1,79 @@
+[
+  {
+    "id": "kgx4WGK0oNU",
+    "title": "Midnight Jazz",
+    "artist": "Velora Mix",
+    "img": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=800",
+    "isTrending": false
+  },
+  {
+    "id": "HQp0DwtTP18",
+    "title": "Saiyaara",
+    "artist": "Faheem Abdullah",
+    "img": "https://i.ytimg.com/vi/HQp0DwtTP18/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "8WOhUueYAZs",
+    "title": "Barbaad",
+    "artist": "Jubin Nautiyal",
+    "img": "https://i.ytimg.com/vi/8WOhUueYAZs/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "COuGgctJ91A",
+    "title": "Dhun",
+    "artist": "Arijit Singh",
+    "img": "https://i.ytimg.com/vi/COuGgctJ91A/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "wmUJwQNGK3k",
+    "title": "Jo Tum Mere Ho",
+    "artist": "Anuv Jain",
+    "img": "https://i.ytimg.com/vi/wmUJwQNGK3k/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "rm5-KhqwqeQ",
+    "title": "Tere Bina",
+    "artist": "A.R. Rahman",
+    "img": "https://i.ytimg.com/vi/rm5-KhqwqeQ/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "yVhhoyfLDfA",
+    "title": "Ishq",
+    "artist": "Faheem Abdullah",
+    "img": "https://i.ytimg.com/vi/yVhhoyfLDfA/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "asxmdFaIock",
+    "title": "Tum Hi Ho",
+    "artist": "Arijit Singh",
+    "img": "https://i.ytimg.com/vi/asxmdFaIock/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "_wjtdQs0cqc",
+    "title": "Pardesiya",
+    "artist": "Sonu Nigam, Sachin-Jigar",
+    "img": "https://i.ytimg.com/vi/_wjtdQs0cqc/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "Ref5bT8Tuk8",
+    "title": "O Maahi",
+    "artist": "Arijit Singh",
+    "img": "https://i.ytimg.com/vi/Ref5bT8Tuk8/hqdefault.jpg",
+    "isTrending": true
+  },
+  {
+    "id": "9DGgiYYPr58",
+    "title": "Satranga",
+    "artist": "Arijit Singh",
+    "img": "https://i.ytimg.com/vi/9DGgiYYPr58/hqdefault.jpg",
+    "isTrending": true
+  }
+]

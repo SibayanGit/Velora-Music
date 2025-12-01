@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Velora Music</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="h-screen w-screen overflow-hidden flex flex-col md:flex-row p-0 md:p-4 gap-4 text-white">
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="glass-panel w-[280px] rounded-[30px] flex-col hidden md:flex overflow-hidden relative shrink-0 z-10">
+        <div class="p-8 pb-4">
+            <h1 class="text-3xl font-bold tracking-tight text-white">Velora Music</h1>
+            <p class="text-[10px] text-gray-400 font-medium tracking-[0.2em] uppercase opacity-70 ml-1">
+                Sonic Experience
+            </p>
+        </div>
+
+        <nav class="flex-1 px-4 py-2 space-y-2">
+            <div onclick="switchTab('home')" id="d-nav-home"
+                class="nav-item active flex items-center gap-4 px-4 py-3 rounded-xl cursor-pointer transition-all duration-300">
+                <i class="fas fa-home text-lg"></i>
+                <span class="font-semibold">Home</span>
+            </div>
+
+            <div onclick="switchTab('search')" id="d-nav-search"
+                class="nav-item inactive flex items-center gap-4 px-4 py-3 rounded-xl cursor-pointer transition-all duration-300">
+                <i class="fas fa-search text-lg"></i>
+                <span class="font-semibold">Discover</span>
+            </div>
+
+            <div class="mt-8 px-4">
+                <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Your Collection</h3>
+
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-gray-300 hover:text-white cursor-pointer transition group">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg transition">
+                            <i class="fas fa-heart text-xs text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium">Liked Songs</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 mt-auto">
+            <div
+                class="bg-black/40 rounded-2xl p-3 flex items-center gap-3 border border-white/5 cursor-pointer hover:bg-black/60 transition">
+                <img src="https://ui-avatars.com/api/?name=User&background=1e1b4b&color=fff"
+                    class="w-10 h-10 rounded-full border-2 border-purple-500/30">
+
+                <div>
+                    <h4 class="text-sm font-bold">My Account</h4>
+                    <p class="text-xs text-gray-400">Premium</p>
+                </div>
+
+                <i class="fas fa-cog ml-auto text-gray-500 hover:text-white transition"></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main
+        class="flex-1 md:glass-panel md:rounded-[30px] overflow-hidden flex flex-col relative w-full h-full transition-all duration-300 z-0">
+
+        <!-- HEADER -->
+        <header
+            class="absolute top-0 left-0 w-full z-20 px-4 md:px-8 py-4 md:py-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm md:backdrop-blur-none md:bg-none">
+
+            <span class="md:hidden font-bold text-xl">Velora Music</span>
+
+            <div id="search-bar-container" class="hidden relative group flex-1 ml-4 md:ml-0 md:flex-none md:w-[350px]">
+                <i class="fas fa-search absolute left-4 top-3.5 text-gray-400"></i>
+                <input id="search-input" type="text" placeholder="Search songs..."
+                    class="w-full bg-white/10 border border-white/10 rounded-full py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:bg-black/80 backdrop-blur-md">
+            </div>
+
+            <div class="hidden md:flex gap-4 ml-auto">
+                <button
+                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10">
+                    <i class="far fa-bell text-gray-300"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN VIEW -->
+        <div id="main-view" class="flex-1 overflow-y-auto pb-48 md:pb-32 pt-20 px-4 md:px-8 hide-scroll scroll-smooth">
+
+            <!-- HOME VIEW -->
+            <div id="view-home" class="space-y-10">
+
+                <!-- FEATURED CARD -->
+                <div
+                    class="w-full h-[220px] rounded-[25px] bg-gradient-to-r from-violet-900 to-fuchsia-900 relative overflow-hidden shadow-2xl group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=800"
+                        class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 transition duration-700 group-hover:scale-105">
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+
+                    <div class="absolute bottom-6 left-6 z-10 pr-6">
+                        <span
+                            class="text-[10px] font-bold tracking-widest uppercase bg-white/20 backdrop-blur-md px-2 py-1 rounded text-white mb-2 inline-block border border-white/10">
+                            Featured Mix
+                        </span>
+
+                        <h2 class="text-3xl font-bold mb-1">Midnight Jazz</h2>
+                        <p class="text-gray-300 text-sm mb-3 line-clamp-1">The smoothest tracks for late night vibes.</p>
+
+                        <button onclick="playTrack('kgx4WGK0oNU')"
+                            class="bg-white text-black w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TRENDING -->
+                <div>
+                    <div class="flex justify-between items-end mb-4 px-1">
+                        <h2 class="text-xl font-bold">Trending Songs</h2>
+                    </div>
+
+                    <div id="trending-container"
+                        class="flex overflow-x-auto gap-4 pb-4 hide-scroll snap-x"></div>
+                </div>
+
+                <!-- ARTISTS -->
+                <div>
+                    <h2 class="text-xl font-bold mb-4 px-1">Popular Artists</h2>
+
+                    <div class="flex overflow-x-auto gap-6 pb-4 hide-scroll snap-x">
+                        <div
+                            class="flex flex-col items-center gap-2 min-w-[100px] cursor-pointer group snap-start">
+                            <div
+                                class="w-24 h-24 rounded-full overflow-hidden border-2 border-transparent group-hover:border-purple-500 transition shadow-lg">
+                                <img src="https://i.ytimg.com/vi/D4VTe_ajEbM/hqdefault.jpg"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300 group-hover:text-white">Arijit Singh</span>
+                        </div>
+
+                        <div
+                            class="flex flex-col items-center gap-2 min-w-[100px] cursor-pointer group snap-start">
+                            <div
+                                class="w-24 h-24 rounded-full overflow-hidden border-2 border-transparent group-hover:border-purple-500 transition shadow-lg">
+                                <img src="https://i.ytimg.com/vi/wtPcVgiZ2nE/hqdefault.jpg"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300 group-hover:text-white">Anuv Jain</span>
+                        </div>
+
+                        <div
+                            class="flex flex-col items-center gap-2 min-w-[100px] cursor-pointer group snap-start">
+                            <div
+                                class="w-24 h-24 rounded-full overflow-hidden border-2 border-transparent group-hover:border-purple-500 transition shadow-lg">
+                                <img src="https://i.ytimg.com/vi/M3KqF_yX_7c/hqdefault.jpg"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300 group-hover:text-white">Faheem Abdullah</span>
+                        </div>
+
+                        <div
+                            class="flex flex-col items-center gap-2 min-w-[100px] cursor-pointer group snap-start">
+                            <div
+                                class="w-24 h-24 rounded-full overflow-hidden border-2 border-transparent group-hover:border-purple-500 transition shadow-lg">
+                                <img src="https://i.ytimg.com/vi/rm5-KhqwqeQ/hqdefault.jpg"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-sm font-medium text-gray-300 group-hover:text-white">A.R. Rahman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOW PLAYING (STATIC) -->
+                <section id="now-playing-section" class="hidden mt-10 mb-8">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="flex items-center justify-between mb-3">
+                            <h2 class="text-xl md:text-2xl font-bold">Now Playing</h2>
+
+                            <!-- AUTOPLAY TOGGLE -->
+                            <label class="flex items-center gap-2 text-xs md:text-sm text-gray-200 cursor-pointer select-none">
+                                <span>Autoplay Next</span>
+                                <div class="relative inline-flex items-center">
+                                    <input id="autoplay-toggle" type="checkbox" class="sr-only peer">
+                                    <div class="w-10 h-5 bg-white/10 rounded-full peer peer-checked:bg-purple-500 transition-all"></div>
+                                    <div
+                                        class="absolute left-[3px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white shadow peer-checked:translate-x-5 transition-transform">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- YOUTUBE PLAYER -->
+                        <div class="w-full max-w-3xl mx-auto rounded-2xl overflow-hidden aspect-video">
+                            <div id="youtube-player"></div>
+                        </div>
+
+                        <div class="mt-4">
+                            <h3 id="now-title" class="text-lg font-semibold truncate">Select a song to start</h3>
+                            <p id="now-artist" class="text-sm text-gray-400 truncate">Velora</p>
+                        </div>
+
+                        <p id="error-banner" class="hidden mt-3 text-xs text-red-400">
+                            This video cannot be played here. Please choose another track.
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- SEARCH VIEW -->
+            <div id="view-search" class="hidden pt-4">
+                <h2 class="text-2xl font-bold mb-6">Discover</h2>
+                <div id="search-results-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- QUEUE SIDEBAR -->
+    <aside id="right-sidebar"
+        class="glass-panel rounded-[30px] hidden xl:flex flex-col overflow-hidden gap-4 sidebar-transition w-0 p-0 opacity-0 shrink-0 z-10">
+        <div class="flex justify-between items-center mb-1 min-w-[260px]">
+            <span class="font-bold text-white">Up Next</span>
+            <button onclick="toggleSidebar()"
+                class="w-7 h-7 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/20 transition text-gray-400 hover:text-white">
+                <i class="fas fa-list text-sm"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 bg-white/5 rounded-xl p-4 overflow-y-auto min-w-[260px]">
+            <div id="queue-list" class="space-y-3 text-gray-300 text-sm">
+                Queue is empty
+            </div>
+        </div>
+    </aside>
+
+    <!-- MOBILE NAV -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full glass-nav z-50 flex justify-around items-center h-[70px] pb-2">
+        <div onclick="switchTab('home')" id="m-nav-home"
+            class="mobile-nav-item active flex flex-col items-center justify-center w-full h-full">
+            <i class="fas fa-home text-xl mb-1"></i>
+            <span class="text-[10px] font-medium">Home</span>
+        </div>
+
+        <div onclick="switchTab('search')" id="m-nav-search"
+            class="mobile-nav-item inactive flex flex-col items-center justify-center w-full h-full">
+            <i class="fas fa-search text-xl mb-1"></i>
+            <span class="text-[10px] font-medium">Search</span>
+        </div>
+    </nav>
+
+    <!-- BOTTOM PLAYER -->
+    <div id="music-player"
+        class="fixed bottom-[80px] md:bottom-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] max-w-5xl h-[70px] md:h-[88px] glass-capsule rounded-full z-40 flex items-center justify-between px-2 md:px-2 md:pr-8 shadow-2xl transition-all duration-500 translate-y-[200%]">
+
+        <!-- ART + TEXT -->
+        <div class="flex items-center gap-3 pl-1 md:pl-2 w-[60%] md:w-[30%] overflow-hidden">
+            <div
+                class="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white/10 shadow-lg flex-shrink-0">
+                <img id="player-art"
+                    src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=200"
+                    class="w-full h-full object-cover animate-[spin-slow_8s_linear_infinite] paused-spin">
+            </div>
+
+            <div class="overflow-hidden">
+                <h4 id="player-title" class="font-bold text-white text-xs md:text-sm truncate pr-2">Select Song</h4>
+                <p id="player-artist" class="text-[10px] md:text-xs text-gray-400 truncate">Velora</p>
+            </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="flex flex-col items-end md:items-center justify-center flex-1 md:max-w-md px-2 md:px-4">
+            <div class="flex items-center gap-4 md:gap-6 mb-1">
+                <button onclick="prevSong()" class="text-white hover:text-purple-400 hidden md:block">
+                    <i class="fas fa-step-backward text-lg"></i>
+                </button>
+
+                <button onclick="togglePlay()"
+                    class="w-10 h-10 md:w-10 md:h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 active:scale-95 transition shadow-lg">
+                    <i id="play-icon" class="fas fa-play ml-0.5"></i>
+                </button>
+
+                <button onclick="nextSong()" class="text-white hover:text-purple-400 hidden md:block">
+                    <i class="fas fa-step-forward text-lg"></i>
+                </button>
+            </div>
+
+            <div class="w-24 md:w-full flex items-center gap-2 text-[10px] text-gray-400 font-mono">
+                <div class="flex-1 relative h-1 bg-white/10 rounded-full cursor-pointer">
+                    <input type="range" id="progress-slider" min="0" max="100" value="0"
+                        class="absolute w-full h-full opacity-0 z-20 cursor-pointer">
+                    <div id="progress-fill"
+                        class="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full w-0 z-10 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VOLUME -->
+        <div class="hidden md:flex items-center gap-4 w-[30%] justify-end">
+            <button onclick="toggleSidebar()" class="text-gray-400 hover:text-white transition">
+                <i class="fas fa-list text-sm"></i>
+            </button>
+
+            <div class="flex items-center gap-3">
+                <i class="fas fa-volume-up text-xs text-gray-400"></i>
+
+                <div class="w-20 relative h-1 bg-white/10 rounded-full">
+                    <input type="range" id="volume-slider" min="0" max="100" value="100"
+                        class="absolute w-full h-full opacity-0 z-20 cursor-pointer">
+                    <div id="volume-fill"
+                        class="absolute top-0 left-0 h-full bg-white w-full z-10 rounded-full pointer-events-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXTERNAL JS -->
+    <script src="script.js"></script>
+</body>
+</html>

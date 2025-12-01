@@ -1,7 +1,8 @@
-/* -----------------------------
-   GLOBAL STYLES
------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
+/* -----------------------------
+   GLOBAL & LAYOUT
+------------------------------ */
 body {
     font-family: 'Outfit', sans-serif;
     background-color: #050505;
@@ -12,17 +13,14 @@ body {
     color: #fff;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-    overflow: hidden;
 }
 
-/* Hide scrollbars */
 .hide-scroll::-webkit-scrollbar { display: none; }
 .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* -----------------------------
-   GLASS EFFECT PANELS
+   GLASS COMPONENTS
 ------------------------------ */
-
 .glass-panel {
     background: rgba(255,255,255,0.03);
     backdrop-filter: blur(20px);
@@ -43,103 +41,85 @@ body {
 }
 
 /* -----------------------------
-   NAVIGATION ITEMS
+   VIDEO PLAYER MODES (COMPLIANCE)
 ------------------------------ */
 
+/* Hidden State (Before first play) */
+.video-hidden {
+    height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    pointer-events: none;
+}
+
+/* Normal Mode (Inside layout) */
+.video-normal {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    aspect-ratio: 16/9;
+    opacity: 1;
+    margin-bottom: 2rem;
+    pointer-events: auto;
+    display: block;
+}
+
+/* Mini Mode (Floating - Compliant Background Play) */
+.video-mini {
+    position: fixed;
+    bottom: 120px; /* Above bottom player */
+    right: 20px;
+    width: 240px !important;
+    height: 135px !important;
+    z-index: 100;
+    opacity: 1;
+    margin-bottom: 0;
+    pointer-events: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Hide the Text Info in Mini Mode */
+.video-mini #video-info-text {
+    display: none;
+}
+
+/* Mobile Mini Player Position */
+@media (max-width: 768px) {
+    .video-mini {
+        bottom: 160px;
+        right: 10px;
+        width: 160px !important;
+        height: 90px !important;
+    }
+}
+
+/* -----------------------------
+   ANIMATIONS & UI
+------------------------------ */
 .nav-item.active {
     background-color: rgba(255,255,255,0.1);
     color: white;
     border: 1px solid rgba(255,255,255,0.05);
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
+.nav-item.inactive { color: #9ca3af; border: 1px solid transparent; }
+.mobile-nav-item.active { color: #c084fc; }
+.mobile-nav-item.inactive { color: #6b7280; }
 
-.nav-item.inactive {
-    color: #9ca3af;
-    border: 1px solid transparent;
-}
-
-.nav-item.inactive:hover {
-    color: white;
-    background-color: rgba(255,255,255,0.05);
-}
-
-.mobile-nav-item.active {
-    color: #c084fc;
-}
-.mobile-nav-item.inactive {
-    color: #6b7280;
-}
-
-/* -----------------------------
-   RANGE SLIDERS
------------------------------- */
-
-input[type=range] {
-    -webkit-appearance: none;
-    background: transparent;
-}
-
+input[type=range] { -webkit-appearance: none; background: transparent; }
 input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 12px;
-    width: 12px;
-    background: #fff;
-    border-radius: 50%;
-    cursor: pointer;
+    -webkit-appearance: none; height: 12px; width: 12px; background: #fff;
+    border-radius: 50%; cursor: pointer; margin-top: -4px;
     box-shadow: 0 0 10px rgba(255,255,255,0.5);
-    margin-top: -4px;
 }
-
 input[type=range]::-webkit-slider-runnable-track {
-    height: 4px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 2px;
-    cursor: pointer;
+    height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px;
 }
 
-/* -----------------------------
-   SIDEBAR TRANSITION
------------------------------- */
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.paused-spin { animation-play-state: paused !important; }
 
 .sidebar-transition {
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease,
-                padding 0.3s ease;
-}
-
-/* -----------------------------
-   PLAYER SPIN ANIMATION
------------------------------- */
-
-@keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
-
-.paused-spin {
-    animation-play-state: paused !important;
-}
-
-/* -----------------------------
-   NOW PLAYING SECTION (CLEAN)
------------------------------- */
-
-#now-playing-section {
-    /* clean spacing without box */
-}
-
-#now-title, #now-artist {
-    transition: color 0.2s ease;
-}
-
-#now-playing-section:hover #now-title {
-    color: #ffffff;
-}
-
-/* -----------------------------
-   UTILITY
------------------------------- */
-
-.text-shadow {
-    text-shadow: 0px 2px 8px rgba(0,0,0,0.6);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
